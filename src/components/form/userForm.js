@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const UserForm = ({ user, onFormChange }) => {
-  const [newUser, setNewUser] = useState(user);
+  //   const [newUser, setNewUser] = useState(user);
   console.log(user);
   const onChangeData = (value, key) => {
     const updatedValue = { ...user, [key]: value };

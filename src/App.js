@@ -8,11 +8,13 @@ import Articles from "./components/pages/articles";
 import About from "./components/pages/about";
 import Contact from "./components/pages/contact";
 import { useEffect, useState } from "react";
-import UserForm from "./components/form/userForm";
-import UserData from "./components/form/userData";
+import UserForm from "./components/form/UserForm";
+import UserData from "./components/form/UserData";
+import Dashboard from "./components/dashboard/dashboard";
+import UserDetail from "./components/form/UserDetail";
 
 function App() {
-  const HeaderLinks = ["Home", "Articles", "About", "Contact"];
+  const HeaderLinks = ["Dashboard", "Home", "Articles", "About", "Contact"];
   const FooterLinks = ["About", "Social", "About us"];
   const [user, setUser] = useState();
   const [open, setOpen] = useState(false);
@@ -37,7 +39,7 @@ function App() {
 
   return (
     <div className="relative">
-      <Header links={HeaderLinks} openModel={() => setOpen(!open)} />;
+      <Header links={HeaderLinks} openModel={() => setOpen(!open)} />
       {open && (
         <div className="absolute flex flex-col space-y-2 bg-white shadow-lg p-3 m-20 rounded-sm">
           <input
@@ -51,23 +53,15 @@ function App() {
           </button>
         </div>
       )}
-      <div className="flex space-x-20">
-        <UserForm
-          user={user}
-          onFormChange={(onChangeUserDetails) => setUser(onChangeUserDetails)}
-        />
-        <UserData
-          user={user}
-          onFormChange={(onChangeUserDetails) => setUser(onChangeUserDetails)}
-        />
-      </div>
       <Routes>
-        {/* <Route path="/Home" element={<Home />} /> */}
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/Articles" element={<Articles />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/userDetail" element={<UserDetail />} />
       </Routes>
-      <Footer links={FooterLinks} />;
+      <Footer links={FooterLinks} />
     </div>
   );
 }
