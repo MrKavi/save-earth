@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Home from "./components/pages/home";
 import Articles from "./components/pages/articles";
 import About from "./components/pages/about";
@@ -12,15 +12,21 @@ import UserForm from "./components/form/UserForm";
 import UserData from "./components/form/UserData";
 import Dashboard from "./components/dashboard/dashboard";
 import UserDetail from "./components/form/UserDetail";
+import Posts from "./components/posts";
+import PostDetails from "./components/posts/postDetails";
+import Cart from "./components/cart";
+import Likes from "./components/like";
 
 function App() {
-  const HeaderLinks = ["Dashboard", "Home", "Articles", "About", "Contact"];
+  const HeaderLinks = ["Dashboard", "Home", "posts", "Articles"];
   const FooterLinks = ["About", "Social", "About us"];
   const [user, setUser] = useState();
   const [open, setOpen] = useState(false);
   const [name, setName] = useState();
   const [updateValue1, setUpdateValue1] = useState(name);
   const userDetails = { name: "Deepak", age: 24, email: "abc@gmail.com" };
+
+  let { id } = useParams();
 
   const HanndleOnChange = (e) => {
     setName(e.target.value);
@@ -60,6 +66,10 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/userDetail" element={<UserDetail />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/postsdetails/:id" element={<PostDetails />} />
+        <Route path="/likes" element={<Likes />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer links={FooterLinks} />
     </div>

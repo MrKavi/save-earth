@@ -1,0 +1,10 @@
+routing through methods redux toolkit
+
+
+cartSlice
+
+add to cart 
+getList
+remove cart
+
+fav icon same actions

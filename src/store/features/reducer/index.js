@@ -1,4 +1,5 @@
 import { combineReducers, createSlice } from "@reduxjs/toolkit";
+import postReducer from "./postReducer";
 
 const userSlice = createSlice({
   name: "user",
@@ -14,6 +15,10 @@ const userSlice = createSlice({
     },
   },
 });
-export const rootReducer = combineReducers({ user: userSlice.reducer });
+
+export const rootReducer = combineReducers({
+  user: userSlice.reducer,
+  posts: postReducer,
+});
 export const { createUser } = userSlice.actions;
-export default rootReducer;
+export default userSlice.reducer;

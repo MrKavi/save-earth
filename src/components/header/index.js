@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { FcLike } from "react-icons/fc";
+import { BsFillCartFill } from "react-icons/bs";
+
 const Header = ({ links, openModel }) => {
   console.log("hello", openModel);
   return (
@@ -15,10 +18,31 @@ const Header = ({ links, openModel }) => {
                 <Link to={`/${elem}`}>{elem}</Link>
               </li>
             ))}
-          <button className="bg-blue-500 p-2 rounded-md" onClick={openModel}>
-            Sign up
-          </button>
+          <div className="flex justify-between items-center space-x-10">
+            <button
+              className="bg-blue-500 px-2 py-1 rounded-md"
+              onClick={openModel}
+            >
+              Sign up
+            </button>
+          </div>
         </ul>
+        <div className="flex space-x-6 ml-11 mr-3">
+          <Link to="likes">
+            <div className="flex items-center cursor-pointer">
+              <span className="text-[10px] text-white mr-[-21px] -z-0">
+                100
+              </span>
+              <FcLike className="text-3xl text-white" />
+            </div>
+          </Link>
+          <Link to="cart">
+            <div className="flex items-center cursor-pointer">
+              <span className="text-[13px] text-black mr-[-19px] -z-0">1</span>
+              <BsFillCartFill className="text-3xl text-white" />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
